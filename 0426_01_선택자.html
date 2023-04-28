@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      p {
+        color: blue;
+      }
+    </style>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> -->
+    <script src="js/jquery-3.6.4.min.js"></script>
+    <script>
+      //$(document).ready(function () {
+      //$("p").text("변경된문단태그입니다");
+      //});
+      $(function () {
+        //$("p").text("변경된문단태그입니다");
+        //$("p#p01").text("변경된문단태그입니다");
+        //$("p.p02").text("변경된문단태그입니다");
+        //$("p").css("color", "red").css("border", "1px solid #000").css("fontSize","20px");
+        //$("p").css({color:"red",border:"1px solid #000",fontSize:"20px"});
+        /*$("p":first").css({
+          color: "red",
+          border: "1px solid #000",
+          fontSize: "20px",
+        });*/
+        //$("p:last").css({ color: "red" });
+        //$("p:last-child").css({ color: "red" });
+        //$("p:nth-child(2)").css({ color: "red" });
+        //$("p:first-child").css({ color: "red" });
+        //$("p:first-of-type").css({ color: "red" });
+        //$("p:eq(1)").css({ color: "red" });
+        //$("p:gt(1)").css({ color: "red" });
+        //$("p:lt(1)").css({ color: "red" });
+        //$("p:eq(1)").css({ color: "red" });
+        $("p:not(:eq(1))").css({ color: "red" });
+        //$("span:only-child").css({ color: "blue" });
+        //$("span:only-of-type").css({ color: "green" });
+        //$("p#p03 + span").css({ color: "green" });
+        //$("p#p03 ~ span").css({ color: "green" });
+        //$("p,span,a").css({ color: "#0ff" });
+        //$("p:even").css({ color: "#0ff" });
+        //$("p:odd").css({ color: "#0ff" });
+        //$(":header").css({ color: "#0f0" });
+        //$("h1:contains('제목')").css({ color: "#0f0" });
+        $("p:has(span)").css({ color: "#0f0" });
+      });
+    </script>
+  </head>
+  <body>
+    <h1>제목태그입니다</h1>
+    <p>문단태그입니다</p>
+    <p id="p01">문단태그입니다</p>
+    <p class="p02">문단태그입니다</p>
+    <p>문단태그입니다</p>
+    <p>문단태그입니다</p>
+    <p>
+      <span>span태그입니다</span>
+    </p>
+    <p>
+      <span>span태그입니다</span>
+      <a href="#">링크태그입니다.</a>
+    </p>
+    <p id="p03">
+      <span>span태그입니다</span>
+      <span>span태그입니다</span>
+      <span>span태그입니다</span>
+      <a href="#">링크태그입니다.</a>
+    </p>
+    <span>span태그입니다</span>
+    <span>span태그입니다</span>
+    <span>span태그입니다</span>
+  </body>
+</html>

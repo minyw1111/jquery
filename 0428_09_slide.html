@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      p {
+        width: 100px;
+        height: 100px;
+        background: #ccc;
+      }
+      button {
+        cursor: pointer;
+      }
+    </style>
+    <script src="js/jquery-3.6.4.min.js"></script>
+    <script>
+      $(function () {
+        //$("#fadein").css("display", "none");
+        $("#fadein").hide();
+        /*$("#slideup").click(function () {
+          $("#slideup").hide();
+          $("#fadein").show();
+        });*/
+        $("#slideup").click(function () {
+          $("p").slideUp(1000, "linear", function () {
+            $("#slideup").hide();
+            $("#fadein").show();
+          });
+        });
+        $("#fadein").click(function () {
+          $("p").fadeIn(1000, "linear", function () {
+            $("#slideup").show();
+            $("#fadein").hide();
+          });
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <button id="slideup">slideup</button>
+    <button id="fadein">fadein</button>
+    <p></p>
+  </body>
+</html>

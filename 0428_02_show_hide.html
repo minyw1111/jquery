@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      <style > p {
+        width: 100px;
+        height: 100px;
+        background: #ccc;
+      }
+      button {
+        cursor: pointer;
+      }
+    </style>
+    <script src="js/jquery-3.6.4.min.js"></script>
+    <script>
+      //show(),hide(),toggle()
+      //show(speed,easing,callback)
+      //speed --> "fast","slow",miliseconds
+      //easing -->"swing","linear",swing-->default
+      //callback -->hide() 또는 show(),toggle() 메서드가 완료된 후 실행되는 함수입니다
+      $(function () {
+        $("body").append('<div id="page"></div>');
+        $("#Bhide").click(function () {
+          $("p").hide(1000, function () {
+            $("#page").text("디스플레이 : " + $("p").css("display"));
+          });
+        });
+        $("#Bshow").click(function () {
+          $("p").show(1000, function () {
+            $("#page").text("디스플레이 : " + $("p").css("display"));
+          });
+        });
+        $("#Btoggle").click(function () {
+          $("p").toggle(1000, function () {
+            $("#page").text("디스플레이 : " + $("p").css("display"));
+          });
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <p></p>
+    <button id="Bshow">show</button>
+    <button id="Bhide">hide</button>
+    <button id="Btoggle">toggle</button>
+  </body>
+</html>

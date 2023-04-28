@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      p {
+        width: 100px;
+        height: 100px;
+        background: #ccc;
+      }
+      button {
+        cursor: pointer;
+      }
+    </style>
+    <script src="js/jquery-3.6.4.min.js"></script>
+    <script>
+      $(function () {
+        $("body").append('<div id="page"></div>');
+        $("#slideup").click(function () {
+          $("p").slideUp(1000, "linear", function () {
+            myfnc();
+          });
+        });
+        $("#slidedown").click(function () {
+          $("p").slideDown(1000, myfnc);
+        });
+        $("#slidetoggle").click(function () {
+          $("p").slideToggle();
+        });
+        function myfnc() {
+          $("#page").text("display : " + $("p").css("display"));
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <p></p>
+    <button id="slideup">slideup</button>
+    <button id="slidedown">slidedown</button>
+    <button id="slidetoggle">slidetoggle</button>
+  </body>
+</html>

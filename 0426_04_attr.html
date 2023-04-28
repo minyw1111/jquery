@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style></style>
+    <script src="js/jquery-3.6.4.min.js"></script>
+    <script>
+      $(function () {
+        //$("p").attr("class", "study").attr("id", "page");
+        //$("p").attr({ class: "study", id: "page" });
+        //$("p").removeAttr("class");
+        //$("p").remove();
+        $(".week").empty();
+        /*$("button").click(function () {
+          $("input").val("변경후");
+        });*/
+        let sr = $("img").attr("src");
+        let al = $("img").attr("alt");
+        let i = 1;
+        $("button#photo").click(function () {
+          if (i == 7) {
+            i = 1;
+          }
+          $("img")
+            .attr("src", sr.replace(sr.slice(-5, -4), i))
+            .attr("alt", al.replace(al.slice(-1), i))
+            .css("width", "300px");
+          i++; //i = i+1 i+=1
+        });
+        $("button#change").click(function () {
+          let x = $("input").val();
+          console.log(x);
+          if (x == "변경전") {
+            $("input").val("변경후");
+          } else {
+            $("input").val("변경전");
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <p>오늘은 수요일</p>
+    <button id="photo">이미지변경</button>
+    <img src="../javascript/images/photo1.jpg" alt="photo1" />
+    <p class="week">내일은 목요일</p>
+    <input type="text" value="변경전" />
+    <button id="change">클릭</button>
+  </body>
+</html>

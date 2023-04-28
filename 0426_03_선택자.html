@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style></style>
+    <script src="js/jquery-3.6.4.min.js"></script>
+    <script>
+      $(function () {
+        //$("ul").append('<li class="page">page</li>');
+        //ul태그 자식요소 뒤에 추가
+        //$("ul").prepend('<li class="page">page</li>');
+        //ul태그 자식요소 앞에 추가
+        //$('<li class="page">page</li>').appendTo("ul");
+        //$('<li class="page">page</li>').prependTo("ul");
+        //$("ul").clone().prependTo("body");
+        //$("ul").clone().appendTo("body");
+        //$("ul:first").wrap('<div id="wrap"></div>');
+        //$("ul:first li").wrap('<div id="wrap"></div>');
+        //$("ul:first li").wrapInner('<div id="wrap"></div>');
+        //$("ul").wrap('<div id="wrap"></div>');
+        //$("ul").wrapAll('<div id="wrap"></div>');
+        //$(".html").after('<li class="page">page</li>');
+        //$(".html").before('<li class="page">page</li>');
+        //$('<li class="page">page</li>').insertAfter(".html");
+        //$('<li class="page">page</li>').insertBefore(".html");
+        //$('<li class="page">page</li>').replaceAll(".html");
+        //$(".page").replaceWith('<li class="html">html</li>');
+        let txt = $("ul li:first").text();
+        console.log("txt :" + txt);
+        //let txt1 = txt.slice(0);
+        //let txt1 = txt.substr(0, 2);
+        let txt1 = txt.substring(0);
+        console.log("txt1 : " + txt1);
+        //$("ul").prepend(txt1);
+        let txt2 = txt1.replace("html", "페이지");
+        console.log("txt2 : " + txt2);
+      });
+    </script>
+  </head>
+  <body>
+    <ul>
+      <li class="html">html</li>
+      <li class="css">css</li>
+      <li class="css3">css3</li>
+      <li class="css-3">css3</li>
+      <li class="javascript">javascript</li>
+      <li class="java script">javascript</li>
+      <li class="jquery">jquery</li>
+      <li>blank</li>
+    </ul>
+  </body>
+</html>
