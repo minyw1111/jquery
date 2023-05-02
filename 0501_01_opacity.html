@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      p {
+        width: 100px;
+        height: 100px;
+        background: #ccc;
+      }
+      @keyframes show {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      @keyframes hide {
+        0% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+      .in {
+        animation: show 1s ease-in forwards;
+      }
+      .out {
+        animation: hide 1s ease-out forwards;
+      }
+    </style>
+    <script src="js/jquery-3.6.4.min.js"></script>
+    <script>
+      $(function () {
+        $("#btn1").click(function () {
+          $("p").removeClass().addClass("in");
+        });
+        $("#btn2").click(function () {
+          $("p").removeClass().addClass("out");
+        });
+        // $("#btn3").click(function () {
+        //   $("p").fadeToggle(1000);
+        // });
+        let status = true;
+        /*$("#btn3").click(function () {
+          if (status) {
+            $("p").removeClass().addClass("in");
+          } else {
+            $("p").removeClass().addClass("out");
+          }
+          status = !status;
+        });*/
+        $("#btn3").click(function () {
+          $("p").removeClass();
+          if (status) {
+            $("p").addClass("in");
+          } else {
+            $("p").addClass("out");
+          }
+          status = !status;
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <p></p>
+    <button id="btn1">fadein</button>
+    <button id="btn2">fadeout</button>
+    <button id="btn3">fadetoggle</button>
+  </body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      p {
+        width: 100px;
+        height: 100px;
+        background: #ccc;
+      }
+      @keyframes show {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      @keyframes hide {
+        0% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+      .in {
+        animation: show 1s ease-in forwards;
+      }
+      .out {
+        animation: hide 1s ease-out forwards;
+      }
+    </style>
+    <script src="js/jquery-3.6.4.min.js"></script>
+    <script>
+      $(function () {
+        $("#btn1").click(function () {
+          $("p").removeClass().addClass("in");
+        });
+        $("#btn2").click(function () {
+          $("p").removeClass().addClass("out");
+        });
+
+        $("#btn3").click(function () {
+          let status = $("p").hasClass("in"); //.hasClass(); //반환값으로는 true는 1로, false는 0으로 반환한다.
+          console.log(status);
+          if (status) {
+            $("p").removeClass().addClass("out");
+          } else {
+            $("p").removeClass().addClass("in");
+          }
+        });
+      });
+      //removeClass()=css스타일을 추가 및 제거,변경하기 위한 클래스의 Name을 제거할 때 사용하는 함수
+      //addClass()=class의 내용이 classname에서 classname add가 되도록 추가하는것
+    </script>
+  </head>
+  <body>
+    <p></p>
+    <button id="btn1">fadein</button>
+    <button id="btn2">fadeout</button>
+    <button id="btn3">fadetoggle</button>
+  </body>
+</html>

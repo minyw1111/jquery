@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      p:nth-child(2) {
+        display: inline-block;
+        background: #0ff;
+      }
+    </style>
+    <script src="js/jquery-3.6.4.min.js"></script>
+    <script>
+      $(function () {
+        $("#btn1").click(function () {
+          $("p:nth-child(2)").animate(
+            { marginLeft: "500px", fontSize: "32px" },
+            2000,
+            "linear",
+            function () {
+              alert("미션완료");
+            }
+          );
+        });
+        //강제로 함수 호출
+        //$("#btn1").click();
+        $("#btn1").trigger("click");
+        $("#btn2").click(function () {
+          $("p:nth-child(4)").animate({ marginLeft: "+=50px" }, 500);
+          //i =i+1 i++ i+=1
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <p><button id="btn1">버튼1</button></p>
+    <p>500px 이동</p>
+    <p><button id="btn2">버튼2</button></p>
+    <p>50px씩 이동</p>
+  </body>
+</html>

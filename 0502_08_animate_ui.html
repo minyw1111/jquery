@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/jquery-ui.css" />
+    <style>
+      .photo {
+        width: 600px;
+        height: 500px;
+        overflow: hidden;
+      }
+      .photo img {
+        width: 600px;
+        height: 500px;
+        object-fit: cover;
+      }
+    </style>
+    <script src="js/jquery-3.6.4.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script>
+      $(function () {
+        /* $("button")
+          .eq(0)
+          .click(function () {
+            let txt = $(this).text();
+            $(".photo").slideToggle(1000, txt);
+          });
+        $("button")
+          .eq(1)
+          .click(function () {
+            let txt = $(this).text();
+            $(".photo").slideToggle(1000, txt);
+          });*/
+        /*$("button").click(function () {
+          let txt = $(this).text();
+          $(".photo").slideToggle(1000, txt);
+        });*/
+        $("button").click(function () {
+          let txt = $(this).text();
+          $(".photo").slideUp(1000, txt, function () {
+            $(this).slideDown(1000, txt);
+          });
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div class="photo">
+      <img src="../javascript/images/photo1.jpg" alt="photo1" />
+    </div>
+    <button>swing</button>
+    <button>linear</button>
+    <button>easeOutBounce</button>
+    <button>easeInOutElastic</button>
+    <button>easeOutQuart</button>
+    <button>easeInOutQuad</button>
+  </body>
+</html>

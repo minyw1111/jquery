@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        height: 300px;
+      }
+      p {
+        width: 500px;
+        overflow: hidden;
+      }
+      p img {
+        width: 500px;
+        height: 300px;
+        object-fit: cover;
+      }
+    </style>
+    <script src="js/jquery-3.6.4.min.js"></script>
+    <script>
+      $(function () {
+        $("button:nth-of-type(1)").click(function () {
+          $("p").animate({ width: "0" }, 1000);
+        });
+        $("button:nth-of-type(2)").click(function () {
+          $("p").animate({ width: "500px" }, 1000);
+        });
+        $("button:nth-of-type(3)").click(function () {
+          //$("p").animate({ height: "0" }, 1000);
+          $("p").slideUp(1000);
+        });
+        $("button:nth-of-type(4)").click(function () {
+          //$("p").animate({ height: "300px" }, 1000);
+          $("p").slideDown(1000);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div>
+      <p><img src="../javascript/images/photo1.jpg" alt="photo1" /></p>
+    </div>
+    <button>slideLeft</button>
+    <button>slideRight</button>
+    <button>slideUp</button>
+    <button>slideDown</button>
+  </body>
+</html>
