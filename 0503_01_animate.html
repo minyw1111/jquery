@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      ul {
+        list-style: none;
+      }
+      a {
+        text-decoration: none;
+      }
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .container {
+        width: 600px;
+        height: 200px;
+      }
+      #tab {
+        padding: 5px 15px;
+        cursor: pointer;
+        margin: 20px 0;
+      }
+      /*.container .gallery {
+        display: flex;
+        width: 100%;
+        height: 100%;
+      }
+      .container .gallery img {
+        width: 100%;
+      }*/
+      .container .gallery {
+        width: 100%;
+        height: 150px;
+        overflow: hidden;
+      }
+      .container .gallery li {
+        position: relative;
+        float: left;
+        width: 33.333%;
+        height: 100%;
+      }
+      .container .gallery img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .container .gallery li p {
+        position: absolute;
+        left: 0;
+        top: 150px;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+      }
+    </style>
+    <script src="js/jquery-3.6.4.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script>
+      $(function () {
+        $(".gallery").css({ position: "relative", left: "-800px" });
+        let status = "closed";
+        $("#tab").click(function () {
+          if (status == "closed") {
+            status = "open";
+            $(this).text("gallery close");
+            $(".gallery").animate({ left: "0px" }, 1000, "easeOutBounce");
+          } else {
+            status = "closed";
+            $(this).text("gallery open");
+            $(".gallery").animate({ left: "-800px" }, 1000, "easeOutBounce");
+          }
+        });
+        $(".gallery li").hover(
+          function () {
+            //마우스 오버시 실행문
+            $(this).children("p").animate({ top: "0" }, 500);
+          },
+          function () {
+            //마우스 이탈시 실행문
+            $(this).find("p").animate({ top: "150PX" }, 500);
+          }
+        );
+      });
+    </script>
+  </head>
+  <body>
+    <h1>basic :: jQuery Effect</h1>
+    <div class="container">
+      <button id="tab">gallery open</button>
+      <ul class="gallery">
+        <li>
+          <img src="../javascript/images/photo1.jpg" alt="photo1" />
+          <p>첫번째 이미지</p>
+        </li>
+        <li><img src="../javascript/images/photo2.jpg" alt="photo2" /></li>
+        <li><img src="../javascript/images/photo3.jpg" alt="photo3" /></li>
+      </ul>
+    </div>
+  </body>
+</html>

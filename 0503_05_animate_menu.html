@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      ul {
+        list-style: none;
+      }
+      a {
+        text-decoration: none;
+        color: #000;
+      }
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      nav {
+        width: 1000px;
+        height: 100px;
+        border: 1px solid #000;
+      }
+      nav > ul {
+        width: 700px;
+        float: right;
+        margin-top: 25px;
+      }
+      nav > ul > li {
+        float: left;
+        width: 25%;
+        text-align: center;
+      }
+      nav > ul > li > a {
+        display: block;
+        width: 100%;
+        line-height: 50px;
+        border: 1px solid #000;
+        border-left: none;
+      }
+      nav > ul > li:first-child > a {
+        border-left: 1px solid #000;
+      }
+      nav > ul > li:first-child .sub {
+        border-left: 1px solid #000;
+      }
+      nav > ul > li:last-child .sub {
+        border-right: 1px solid #000;
+      }
+      nav .sub li a {
+        display: block;
+        width: 100%;
+        line-height: 40px;
+      }
+      nav > ul > li:hover > a,
+      nav ul li a:hover {
+        background: #000;
+        color: #fff;
+      }
+      nav > ul:hover .sub {
+        border-bottom: 1px solid #000;
+      }
+    </style>
+    <script src="js/jquery-3.6.4.min.js"></script>
+    <script>
+      $(function () {
+        $(".sub").css("display", "none").css("backgroundColor", "#fff");
+        $("nav>ul>li").hover(
+          function () {
+            $(".sub").stop().slideDown(500);
+          },
+          function () {
+            $(".sub").stop().slideUp(500);
+          }
+        );
+      });
+    </script>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li>
+          <a href="#">menu1</a>
+          <ul class="sub">
+            <li><a href="#">submenu1</a></li>
+            <li><a href="#">submenu2</a></li>
+            <li><a href="#">submenu3</a></li>
+            <li><a href="#">submenu4</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">menu2</a>
+          <ul class="sub">
+            <li><a href="#">submenu1</a></li>
+            <li><a href="#">submenu2</a></li>
+            <li><a href="#">submenu3</a></li>
+            <li><a href="#">submenu4</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">menu3</a>
+          <ul class="sub">
+            <li><a href="#">submenu1</a></li>
+            <li><a href="#">submenu2</a></li>
+            <li><a href="#">submenu3</a></li>
+            <li><a href="#">submenu4</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">menu4</a>
+          <ul class="sub">
+            <li><a href="#">submenu1</a></li>
+            <li><a href="#">submenu2</a></li>
+            <li><a href="#">submenu3</a></li>
+            <li><a href="#">submenu4</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </body>
+</html>
