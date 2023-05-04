@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: #8ac007;
+        position: relative;
+        top: 100px;
+        left: 100px;
+      }
+    </style>
+    <script src="js/jquery-3.6.4.min.js"></script>
+    <script>
+      $(function () {
+        /* $(".left").click(function () {
+          $("#user_dir").val("left");
+          $("div").css({ left: "-=10px" }); //left=left-10
+        });
+        $(".right").click(function () {
+          $("#user_dir").val("right");
+          $("div").css({ left: "+=10px" }); //left=left+10
+        });
+        $(".top").click(function () {
+          $("#user_dir").val("top");
+          $("div").css({ top: "-=10px" }); //top=top-10
+        });
+        $(".bottom").click(function () {
+          $("#user_dir").val("bottom");
+          $("div").css({ top: "+=10px" }); //top=top+10
+        });*/
+        $("button").click(function () {
+          let direct = $(this).text();
+          console.log(direct);
+          if (direct == "left") {
+            $("div").css({ left: "-=10px" });
+          } else if (direct == "right") {
+            $("div").css({ left: "+=10px" });
+          } else if (direct == "top") {
+            $("div").css({ top: "-=10px" });
+          } else {
+            $("div").css({ top: "+=10px" });
+          }
+          if (direct) $("#user_dir").val(direct);
+        });
+        $(document).keydown(function (e) {
+          let num = e.keyCode;
+          let direct = "";
+          console.log(num);
+          if (num == 37) {
+            direct = "left";
+            $("div").css({ left: "-=10px" });
+          } else if (num == 39) {
+            direct = "right";
+            $("div").css({ left: "+=10px" });
+          } else if (num == 38) {
+            direct = "top";
+            $("div").css({ top: "-=10px" });
+          } else {
+            direct = "bottom";
+            $("div").css({ top: "+=10px" });
+          }
+          if (direct) $("#user_dir").val(direct);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <p><input type="text" id="user_dir" /></p>
+    <button class="left">left</button>
+    <button class="right">right</button>
+    <button class="top">top</button>
+    <button class="bottom">bottom</button>
+    <div></div>
+  </body>
+</html>

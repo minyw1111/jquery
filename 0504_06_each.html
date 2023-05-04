@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style></style>
+    <script src="js/jquery-3.6.4.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script>
+      $(function () {
+        $("body").append('<p class="info"></p>');
+        $("ul li").each(function () {
+          $(".info").append($(this).text() + "<br>");
+        });
+        let arr = ["서울", "부산", "대전", "대구", "제주도"];
+        $.each(arr, function (index, item) {
+          let result = index + item + "<br>";
+          $(".info").append(result);
+        });
+        let obj = {
+          daum: "http://www.daum.net",
+          naver: "http://www.naver.com",
+          google: "http://www.google.com",
+        };
+        $.each(obj, function (index, item) {
+          let result = "index : " + index + "item : " + item + "<br>";
+          $(".info").append(result);
+        });
+        let multi = [
+          { title: "다음", url: "http://www.daum.net" },
+          { title: "네이버", url: "http://www.naver.com" },
+          { title: "구글", url: "http://www.google.com" },
+        ];
+        $.each(multi, function (index, item) {
+          let result = index + item.title + item.url + "<br>";
+          $(".info").append(result);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <ul>
+      <li>하나</li>
+      <li>둘</li>
+      <li>셋</li>
+      <li>넷</li>
+    </ul>
+  </body>
+</html>

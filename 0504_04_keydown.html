@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: #8ac007;
+        position: relative;
+        top: 100px;
+        left: 100px;
+      }
+    </style>
+    <script src="js/jquery-3.6.4.min.js"></script>
+    <script>
+      $(function () {
+        function myfnc(direct) {
+          if (direct == "left" || direct == 37) {
+            $("div").css({ left: "-=10px" });
+          } else if (direct == "right" || direct == 39) {
+            $("div").css({ left: "+=10px" });
+          } else if (direct == "top" || direct == 38) {
+            $("div").css({ top: "-=10px" });
+          } else {
+            $("div").css({ top: "+=10px" });
+          }
+          if (direct) $("#user_dir").val(direct);
+        }
+        $("button").click(function () {
+          let txt = $(this).text();
+          console.log(txt);
+          myfnc(txt); //left,right,top,bottom의 매개변수
+        });
+        $(document).keydown(function (e) {
+          let num = e.keyCode; //37,38,39,40의 매개변수로 함수 실행
+          myfnc(num); //37,38,39,40의 매개변수
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <p><input type="text" id="user_dir" /></p>
+    <button class="left">left</button>
+    <button class="right">right</button>
+    <button class="top">top</button>
+    <button class="bottom">bottom</button>
+    <div></div>
+  </body>
+</html>
