@@ -112,7 +112,7 @@ $("button").click(function () {
    });
 
 *on 이벤트 함수=한 번만 실행된 후 자체적으로 제거되는 이벤트를 첨부하려면 on() 메소드
- $(function () {
+$(function () {
         //$("button").click(function () {});
         let i = 0;
 
@@ -136,3 +136,65 @@ $("button").click(function () {
           },
         });
       });
+
+*반복적인 함수를 매개변수를 이용하여 간단하게 서식
+ <script>
+      $(function () {
+        function myfnc(direct) {
+          if (direct == "left" || direct == 37) {
+            $("div").css({ left: "-=10px" });
+          } else if (direct == "right" || direct == 39) {
+            $("div").css({ left: "+=10px" });
+          } else if (direct == "top" || direct == 38) {
+            $("div").css({ top: "-=10px" });
+          } else {
+            $("div").css({ top: "+=10px" });
+          }
+          if (direct) $("#user_dir").val(direct);
+        }
+        $("button").click(function () {
+          let txt = $(this).text();
+          console.log(txt);
+          myfnc(txt); //left,right,top,bottom의 매개변수
+        });
+        $(document).keydown(function (e) {
+          let num = e.keyCode; //37,38,39,40의 매개변수로 함수 실행
+          myfnc(num); //37,38,39,40의 매개변수
+        });
+      });
+    </script>
+
+*each() 함수의 개념
+jQuery의 each() 메서드는 배열, Map, 그리고 객체를 매개변수로 받아, 마치 반복문처럼 그 요소들을 검사하고 반복할수 있도록 하는 함수입니다
+
+<script>
+      $(function () {
+        $("body").append('<p class="info"></p>');
+        $("ul li").each(function () {
+          $(".info").append($(this).text() + "<br>");
+        });
+        let arr = ["서울", "부산", "대전", "대구", "제주도"];
+        $.each(arr, function (index, item) {
+          let result = index + item + "<br>";
+          $(".info").append(result);
+        });
+        let obj = {
+          daum: "http://www.daum.net",
+          naver: "http://www.naver.com",
+          google: "http://www.google.com",
+        };
+        $.each(obj, function (index, item) {
+          let result = "index : " + index + "item : " + item + "<br>";
+          $(".info").append(result);
+        });
+        let multi = [
+          { title: "다음", url: "http://www.daum.net" },
+          { title: "네이버", url: "http://www.naver.com" },
+          { title: "구글", url: "http://www.google.com" },
+        ];
+        $.each(multi, function (index, item) {
+          let result = index + item.title + item.url + "<br>";
+          $(".info").append(result);
+        });
+      });
+

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 50px;
+        height: 50px;
+        padding: 10px;
+        border: 5px solid #000;
+        cursor: pointer;
+        margin: 4px;
+      }
+    </style>
+    <script src="js/jquery-3.6.4.min.js"></script>
+    <script>
+      $(function () {
+        $("div").click(function () {
+          let x = $(this).offset();
+          console.log(x);
+          $("body").append('<p id="page"></p>');
+          $("#page").html(
+            this.tagName +
+              "태그의 Left 좌표는 : " +
+              x.left +
+              "px" +
+              "<br>" +
+              this.tagName +
+              "태그의  Top 좌표는 : " +
+              x.top +
+              "px" +
+              "<br>" +
+              this.tagName +
+              "태그의  width는 : " +
+              $(this).width() +
+              "px" +
+              "<br>" +
+              this.tagName +
+              "태그의  heigt는 : " +
+              $(this).height() +
+              "px" +
+              "<br>" +
+              this.tagName +
+              "태그의  innerwidth는 : " +
+              $(this).innerWidth() +
+              "px" +
+              "<br>" +
+              this.tagName +
+              "태그의  innerheight는 : " +
+              $(this).innerHeight() +
+              "px" +
+              "<br>" +
+              this.tagName +
+              "태그의  outerwidth는 : " +
+              $(this).outerWidth() +
+              "px" +
+              "<br>" +
+              this.tagName +
+              "태그의  outerheight는 : " +
+              $(this).outerHeight() +
+              "px" +
+              "<br>" +
+              "<br>" +
+              this.tagName +
+              "태그의  outerwidth는 : " +
+              $(this).outerWidth(true) +
+              "px" +
+              "<br>" +
+              this.tagName +
+              "태그의  outerheight는 : " +
+              $(this).outerHeight(true) +
+              "px" +
+              "<br>"
+          );
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div></div>
+  </body>
+</html>

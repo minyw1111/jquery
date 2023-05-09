@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      ul {
+        list-style: none;
+      }
+      a {
+        text-decoration: none;
+      }
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      #wrap {
+        width: 600px;
+        height: 400px;
+        margin: 0 auto;
+        background: #e3e3e3;
+      }
+      #wrap #bigimg {
+        width: 90%;
+        margin: 0 auto;
+      }
+      #wrap #bigimg img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+      }
+      .gallery {
+        text-align: center;
+      }
+      .gallery li {
+        display: inline-block;
+      }
+      .gallery img {
+        width: 100px;
+        border: 2px solid #afafaf;
+      }
+      .gallery img:hover {
+        border-color: #fff;
+      }
+      .gallery img.on {
+        border-color: #f90;
+      }
+    </style>
+    <script src="js/jquery-3.6.4.min.js"></script>
+    <script>
+      $(function () {
+        $(".gallery li").eq(0).find("a").children("img").addClass("on");
+        function myfnc(im, pa) {
+          im.attr("src", pa)
+            .css("opacity", "0")
+            .stop()
+            .animate({ opacity: "1" }, 500);
+        }
+        let i = 1;
+        function mymove() {
+          if (i < 3) {
+            i++; //i=i+1
+          } else {
+            i = 1;
+          }
+          $(".gallery li")
+            .eq(i - 1)
+            .find("a")
+            .children("img")
+            .addClass("on");
+          let path = "../javascript/images/photo" + i + ".jpg";
+          myfnc($("#bigimg img"), path);
+          $(".gallery li a")
+            .find("img")
+            .each(function () {
+              if ($(this).hasClass("on")) {
+                $(this).removeClass("on");
+              }
+            });
+          $(".gallery li")
+            .eq(i - 1)
+            .find("a")
+            .children("img")
+            .addClass("on");
+        }
+        let interval = setInterval(mymove, 2000);
+        $(".gallery li a").click(function (e) {
+          e.preventDefault();
+          let path = $(this).attr("href");
+          console.log(path);
+          //$("#bigimg").find("img").attr("src", path);
+          myfnc($("#bigimg img"), path);
+          $(".gallery li a")
+            .find("img")
+            .each(function () {
+              if ($(this).hasClass("on")) {
+                $(this).removeClass("on");
+              }
+            });
+          $(this).find("img").addClass("on");
+        });
+        $("#wrap").hover(
+          function () {
+            clearInterval(interval);
+          },
+          function () {
+            interval = setInterval(mymove, 2000);
+          }
+        );
+      });
+    </script>
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="bigimg">
+        <img src="../javascript/images/photo1.jpg" alt="photo1" />
+      </div>
+      <ul class="gallery">
+        <li>
+          <a href="../javascript/images/photo1.jpg">
+            <img src="../javascript/images/photo1.jpg" alt="photo1"
+          /></a>
+        </li>
+        <li>
+          <a href="../javascript/images/photo2.jpg">
+            <img src="../javascript/images/photo2.jpg" alt="photo2"
+          /></a>
+        </li>
+        <li>
+          <a href="../javascript/images/photo3.jpg">
+            <img src="../javascript/images/photo3.jpg" alt="photo3"
+          /></a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

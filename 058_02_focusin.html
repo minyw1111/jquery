@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style></style>
+    <script src="js/jquery-3.6.4.min.js"></script>
+    <script>
+      $(function () {
+        /* $("div").focusin(function () {
+          //$(this).css("backgroundColor","#f00");
+          $(this).css({
+            backgroundColor: "#f00",
+            border: "1px solid #000",
+            padding: "10px",
+          });
+        });
+        $("div").focusout(function () {
+          $(this).css({
+            backgroundColor: "#fff",
+          });
+        });*/
+        $("div").on({
+          focusin: function () {
+            $(this).css({
+              backgroundColor: "#f00",
+              border: "1px solid #000",
+              padding: "10px",
+            });
+            $(this).find("input").css("outline", "none");
+          },
+          focusout: function () {
+            $(this).css({
+              backgroundColor: "#fff",
+            });
+          },
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div>
+      <input type="text" />
+      <input type="text" />
+    </div>
+  </body>
+</html>
