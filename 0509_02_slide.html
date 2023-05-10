@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      ul {
+        list-style: none;
+      }
+      #slideShow {
+        width: 1280px;
+        height: 300px;
+        position: relative;
+        margin: 50px auto;
+        overflow: hidden;
+      }
+      .slides {
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+      .slides li {
+        width: 1280px;
+        height: 300px;
+      }
+      .slides img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .slides li {
+        float: left;
+      }
+      .controller li {
+        position: absolute;
+        color: #fff;
+        text-align: center;
+        /* border-radius: 50%; */
+        /* padding: 10px 20px; */
+        width: 21px;
+        height: 39px;
+        top: 50%;
+        font-size: 1.3em;
+        cursor: pointer;
+        text-indent: -9999px;
+        background-image: url(../javascript/images/btns.png);
+      }
+      .prev {
+        left: 10px;
+        background-position: -6px -4px;
+      }
+      /* .prev:hover {
+        transform: translateX(-10px);
+      } */
+      .next {
+        right: 10px;
+        background-position: -29px -4px;
+      }
+      /* .next:hover {
+        transform: translateX(10px);
+      } */
+      .page {
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        text-align: center;
+      }
+      .page li {
+        display: inline-block;
+        cursor: pointer;
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background: #fff;
+        border-radius: 50%;
+        transition: background 0.6s ease;
+      }
+      .page li.active,
+      .page li:hover {
+        background: #111;
+      }
+    </style>
+    <script src="js/jquery-3.6.4.min.js"></script>
+    <script>
+      $(function () {
+        let current = 0;
+        let i = $(".slides li").length;
+        $(".page li").eq(0).addClass("active");
+        let slideWidth = $(".slides li").width();
+        console.log(slideWidth);
+        $(".slides").append($(".slides li").eq(0).clone());
+        $(".slides").prepend(
+          $(".slides li")
+            .eq(i - 1)
+            .clone()
+        );
+        $(".slides").css({
+          width: slideWidth * (i + 2) + "px",
+          left: -slideWidth + "px",
+        });
+        function showSlide(n) {
+          $(".page li").removeClass("active");
+          $(".page li").eq(n).addClass("active");
+          $(".slides").css({
+            left: -(n + 1) * slideWidth + "px",
+            transition: "0.5s",
+          });
+        }
+        $(".page li").click(function () {
+          let n = $(this).index();
+          showSlide((current = n));
+        });
+        $(".next").click(function () {
+          if (current <= i - 1) {
+            //슬라이드이동
+            $(".slides").css({
+              left: -(current + 2) * slideWidth + "px",
+              transition: "0.5s",
+            });
+          }
+          if (current == i - 1) {
+            setTimeout(function () {
+              $(".slides").css({ left: -slideWidth + "px", transition: "0s" });
+            }, 500);
+            current = -1;
+          }
+          current += 1;
+          $(".page li").removeClass("active");
+          $(".page li").eq(current).addClass("active");
+        });
+        $(".prev").click(function () {
+          if (current >= 0) {
+            $(".slides").css({
+              left: -current * slideWidth + "px",
+              transition: "0.5s",
+            });
+          }
+          if (current == 0) {
+            setTimeout(function () {
+              $(".slides").css({
+                left: -i * slideWidth + "px",
+                transition: "0s",
+              });
+            }, 500);
+            current = i;
+          }
+          current -= 1;
+          $(".page li").removeClass("active");
+          $(".page li").eq(current).addClass("active");
+        });
+        let interval = setInterval(function () {
+          $(".next").trigger("click");
+        }, 2000);
+        $("#slideShow").hover(
+          function () {
+            clearInterval(interval);
+          },
+          function () {
+            interval = setInterval(function () {
+              $(".next").trigger("click");
+            }, 2000);
+          }
+        );
+      });
+    </script>
+  </head>
+  <body>
+    <div id="slideShow">
+      <ul class="slides">
+        <li><img src="../javascript/images/photo1.jpg" alt="photo1" /></li>
+        <li><img src="../javascript/images/photo2.jpg" alt="photo2" /></li>
+        <li><img src="../javascript/images/photo3.jpg" alt="photo3" /></li>
+        <li><img src="../javascript/images/photo4.jpg" alt="photo4" /></li>
+        <li><img src="../javascript/images/photo5.jpg" alt="photo5" /></li>
+        <li><img src="../javascript/images/photo6.jpg" alt="photo6" /></li>
+      </ul>
+      <ul class="controller">
+        <li class="prev">&lang;</li>
+        <li class="next">&rang;</li>
+      </ul>
+      <ul class="page">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+  </body>
+</html>

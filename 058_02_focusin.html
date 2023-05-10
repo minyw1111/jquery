@@ -24,6 +24,7 @@
         });*/
         $("div").on({
           focusin: function () {
+            //포커스 인 이벤트는 요소(또는 하위요소)가 포커스를 얻을때 발생합니다.
             $(this).css({
               backgroundColor: "#f00",
               border: "1px solid #000",
@@ -32,6 +33,7 @@
             $(this).find("input").css("outline", "none");
           },
           focusout: function () {
+            //focusout() 포커스 아웃 이벤트는 요소(또는 하위요소)가 포커스를 잃을때 발생합니다.
             $(this).css({
               backgroundColor: "#fff",
             });
