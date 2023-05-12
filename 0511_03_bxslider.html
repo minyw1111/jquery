@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/jquery.bxslider.css" />
+    <script src="js/jquery-3.6.4.min.js"></script>
+    <script src="js/jquery.bxslider.js"></script>
+    <style>
+      #slide {
+        width: 1280px;
+        height: 400px;
+        margin: 0 auto;
+      }
+      .bxslider > div img {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+      }
+    </style>
+    <script>
+      $(function () {
+        $(".bxslider").bxSlider({
+          mode: "horizontal",
+          slideWidth: 1280,
+          auto: true,
+          pause: 2000,
+          autoHover: true,
+          //maxSlides: 3,
+          //slideMargin: 50,
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div id="slide">
+      <div class="bxslider">
+        <div><img src="../javascript/images/photo1.jpg" title="photo1" /></div>
+        <div><img src="../javascript/images/photo2.jpg" title="photo2" /></div>
+        <div><img src="../javascript/images/photo3.jpg" title="photo3" /></div>
+      </div>
+    </div>
+  </body>
+</html>
