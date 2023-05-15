@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      section {
+        width: 100%;
+        height: 100vh;
+        font-size: 100px;
+        color: #fff;
+      }
+      section:first-child {
+        background: red;
+        /* position: fixed;
+        top: 0;
+        opacity: 0.5; */
+      }
+      section:nth-child(2) {
+        background: blue;
+        /* position: relative;
+        top: 100vh; */
+      }
+      section:nth-child(3) {
+        background: green;
+        /* position: relative;
+        top: 100vh; */
+      }
+      section:nth-child(4) {
+        background: cyan;
+        /* position: relative;
+        top: 100vh; */
+      }
+      section.on {
+        position: fixed;
+        top: 0;
+      }
+      section.on1 {
+        position: relative;
+        top: 100vh;
+      }
+    </style>
+    <script src="js/jquery-3.6.4.min.js"></script>
+    <script>
+      $(function () {
+        $(window).scroll(function () {
+          let ht = $(window).scrollTop();
+          let t = $(window).height();
+          if (ht >= 0 && ht < t * 1) {
+            $("section").removeClass();
+            $("section").eq(0).addClass("on");
+            $("section").eq(0).siblings().addClass("on1");
+          } else if (ht >= t * 1 && ht < t * 2) {
+            $("section").removeClass();
+            $("section").eq(1).addClass("on");
+            $("section").eq(1).siblings().addClass("on1");
+          } else if (ht >= t * 2 && ht < t * 3) {
+            $("section").removeClass();
+            $("section").eq(2).addClass("on");
+            $("section").eq(2).siblings().addClass("on1");
+          } else if (ht >= t * 3 && ht < t * 4) {
+            $("section").removeClass();
+            $("section").eq(3).addClass("on");
+            $("section").eq(3).siblings().addClass("on1");
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <section>하나</section>
+    <section>둘</section>
+    <section>셋</section>
+    <section>넷</section>
+  </body>
+</html>

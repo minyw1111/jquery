@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>아날로그 시계</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      ul {
+        list-style: none;
+      }
+      a {
+        text-decoration: none;
+      }
+      body {
+        font-family: Arial, 돋움, Doctum, sans-serif;
+      }
+      #contents {
+        width: 630px;
+        height: 630px;
+        margin: 100px auto;
+      }
+      .clock {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+      .clock li {
+        position: absolute;
+        width: 630px;
+        height: 630px;
+      }
+      #base {
+        background-image: url(../images/clock_bg.png);
+      }
+      #hour {
+        background-image: url(../images/hour.png);
+      }
+      #minute {
+        background-image: url(../images/minute.png);
+      }
+      #second {
+        background-image: url(../images/second.png);
+        background-size: 630px 630px;
+      }
+      #center {
+        background-image: url(../images/center_bg.png);
+      }
+    </style>
+    <script src="js/jquery-3.6.4.min.js"></script>
+    <script>
+      function Clock() {
+        let today = new Date();
+        let hour = today.getHours();
+        let minute = today.getMinutes();
+        let second = today.getSeconds();
+        if (hour >= 12) {
+          hour = hour - 12;
+        }
+        timing(hour, minute, second);
+      }
+      function timing(h, m, s) {
+        let hour = document.getElementById("hour");
+        let minute = document.getElementById(" minute");
+        let second = document.getElementById("second");
+        //30도를 1시간 30/60===0.5*1(분),0.5*10(분)
+        h = (360 / 12) * h + 0.5 * m;
+        m = (360 / 60) * m;
+        s = (360 / 60) * s;
+        hour.style.transform = "rotate(" + h + "deg)";
+        minute.style.transform = "rotate(" + m + "deg)";
+        second.style.transform = "rotate(" + s + "deg)";
+      }
+      setInterval(Clock, 1000);
+    </script>
+  </head>
+  <body>
+    <div class="contents">
+      <ul class="clock">
+        <li id="base"></li>
+        <li id="hour"></li>
+        <li id="minute"></li>
+        <li id="second"></li>
+        <li id="center"></li>
+      </ul>
+    </div>
+  </body>
+</html>
